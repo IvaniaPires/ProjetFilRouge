@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" async></script>
+</head>
+
+<body>
+    <header>
+        <div id="navbar">
+            <div id="home_logo">
+                <img src="assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" />
+            </div>
+            <div id="navbar_hamburger_icon">
+                <!-- Quelques spans pour faire office de hamburguer -->
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Elements du menu -->
+            <nav role="navigation" id="navbar_menu">
+                <ul>
+                    <li><a href="login.html">SE CONECTER</a></li>
+                    <li><a href="new_costumer.html">S'ENREGISTRER</a></li>
+                    <li><a href="/new_delivery_man_application">DEVENIR LIVREUR</a></li>
+                    <li><a href="/new_restaurant_application">DEVENIR RESTAURANT PARTENAIRE</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="search_div">
+            <h1 id="title">Mangez-Chez-Vous</h1>
+            <form id="search_location" action="/search" method="POST">
+                <input type="text" name="search_bar" class="search_bar" placeholder="Votre localisation (commune)" />
+                <button type="submit" id="search_button"><span>Consulter</span></button>
+            </form>
+        </div>
+    </header>
+    <h1>Comment ça marche?</h1>
+    <div class="slide_conteiner">
+
+        <div class="slider">
+
+            <div class="slides">
+                <div class="slide_text" style="background-image:url(assets/img/localisation_logo.png)" id="slide_1">
+                    1.Je choisis une commune
+
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/restaurant_logo.png)" id="slide_2">
+                    2.Je choisis le(s) restaurants
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/plat_logo.png)" id="slide_3">
+                    3.Je choisis mes plats
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/connexion_logo.png)" id="slide_4">
+                    4.Je me connecte
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/pannier_logo.png)" id="slide_5">
+                    5.Je valide ma commande
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/livraison_logo.png)" id="slide_6">
+                    6.Mon repas est en route
+                </div>
+                <div class="slide_text" style="background-image:url(assets/img/atable_logo.png)" id="slide_7">
+                    7.Bon appétit !!!
+                </div>
+            </div>
+            <div id="space"></div>
+            <a class="a" href="#slide_1">1</a>
+            <a class="a" href="#slide_2">2</a>
+            <a class="a" href="#slide_3">3</a>
+            <a class="a" href="#slide_4">4</a>
+            <a class="a" href="#slide_5">5</a>
+            <a class="a" href="#slide_6">6</a>
+            <a class="a" href="#slide_7">7</a>
+        </div>
+    </div>
+    <h1>Pourquoi nous choisir</h1>
+    <p id="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel lacus efficitur, ultricies lacus blandit, rhoncus felis. Fusce facilisis arcu orci, quis interdum neque scelerisque sit amet. Sed tincidunt auctor nulla, quis malesuada ante ultricies
+        vitae. Donec vestibulum orci ut turpis aliquam lacinia. Quisque id leo ut dui vulputate fringilla et non eros. Pellentesque id tortor rutrum, scelerisque risus ac, lacinia enim. Donec eu tortor diam.Nulla tristique rhoncus libero, sed viverra
+        lectus posuere non. Vivamus interdum convallis tempus. Maecenas auctor orci at nisi fermentum, eu imperdiet velit tempus. Sed maximus massa et libero gravida, eget convallis purus tristique. Sed posuere posuere volutpat. Etiam vehicula eleifend
+        dui vitae consequat. <button id="accordion" class="more"></button><span id="span_accordion" class="span_accordion">
+			Morbi non nibh vitae arcu elementum congue.			
+			Maecenas gravida, nulla eget blandit gravida, ligula nisi porttitor velit, ut rhoncus ligula urna eu leo. 
+			Vivamus purus mauris, fringilla quis tortor blandit, ornare posuere sapien. Donec faucibus turpis purus, eget convallis dolor 
+			ultricies sed. Curabitur auctor diam diam, id iaculis orci dapibus ut. Pellentesque lacus mauris, sagittis nec dolor in, porta 
+			vestibulum enim. Donec ornare, orci ac consequat cursus, leo sapien sagittis ligula, eget rhoncus sapien dolor eleifend turpis. 
+			Nunc varius diam in dui pharetra viverra. Nunc ultricies, elit quis aliquam maximus, erat felis pharetra quam, a dictum nunc 
+			arcu eget urna.			
+			Ut in quam urna. Integer a justo faucibus, rutrum neque ac, sollicitudin purus. Morbi semper lectus eu nunc dictum, eu rhoncus
+			ex vestibulum. Sed finibus consectetur massa, sollicitudin auctor metus facilisis dapibus. Phasellus at lacus ac nunc commodo 
+			eleifend vel non eros. Nam vel metus a velit ultrices interdum. Pellentesque convallis tincidunt nibh sit amet volutpat. In sodales.</span></span>
+    </p>
+    </div>
+    <div class="parallax">
+        <div class="text_parallax">Decouvrez les plats de nos restaurants chez vous!</div>
+    </div>
+    <div class="div_imgtext">
+        <img id="imgtext" src="assets/img/plat2.jpeg" />
+        <div id="divtext">
+            <h2>Lorem Ipsum</h2>
+            <p id="p_imgtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel auctor nunc, id lobortis augue. Nulla pretium nibh eget quam efficitur, in lobortis velit volutpat. Nulla finibus est vel tincidunt eleifend. Mauris at mollis nulla, sed porttitor
+                ipsum. Nullam dignissim cursus odio, at rhoncus sem posuere non. Pellentesque pharetra volutpat aliquam. Duis auctor mauris nisi, sed fringilla nibh finibus non. Aenean ullamcorper quis nulla non suscipit. Etiam vel diam sit amet enim
+                eleifend eleifend ut vitae orci. Suspendisse hendrerit suscipit lorem. Sed rutrum nulla vitae justo mollis, fermentum iaculis orci maximus. Sed at elementum orci. Mauris ac lorem ac neque.
+            </p>
+        </div>
+
+    </div>
+    </div>
+    <div class="parallax" id="parallax2">
+        <div class="div_parallax2">
+            <div id="text_parallax2">
+                Venez nous rejoindre sur nos reseaux sociaux
+            </div>
+            <div>
+                <a><img class="social_media" src="assets/img/facebook.png" /></a>
+                <a><img class="social_media" src="assets/img/instagram.png" /></a>
+                <a><img class="social_media" src="assets/img/twitter.png" /></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="footer">
+            <ul class="footer">
+                <li>
+                    <a href="">A propos</a>
+                </li>
+                <li>
+                    <a href="">Politique de confidentialité</a>
+                </li>
+                <li>
+                    <a href="">Politique de Cookies</a>
+                </li>
+            </ul>
+
+        </div>
+    </footer>
+</body>
+
+</html>

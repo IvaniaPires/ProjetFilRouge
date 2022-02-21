@@ -37,6 +37,8 @@ db.connect((function(err) {
     console.log("Connected");
 }));
 
+
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
