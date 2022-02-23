@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body style="background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+      ), url(/assets/img/parallax.jpg);" class="body_form">
+    <div id="navbar">
+        <div id="logo">
+            <a href="/"><img src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" /></a>
+        </div>
+    </div>
+    <h1 class="form_h1">Formulaire pour devenir restaurant partenaire</h1>
+    <form class="form_login" id="form_restaurant_application" action="/form_restaurant_application" method="POST">
+        <div>
+            <select class="search_bar" name="id_mcv_local" id="id_mcv_local">
+                    <option  value="">--Choisir une agence--</option>
+                    <% stores.forEach( element => {%>
+                       <option value ="<%=element.id_mcv_local%>"><%=element.name_mcv_local%></option>
+                    <%})%>                         
+                </select>
+        </div>
+        <div>
+            <label for="name_restaurant">Nom du restaurant</label>
+            <input class="input_form" type="text" id="name_restaurant" name="name_restaurant" placeholder="Nom du restaurant" required/>
+        </div>
+        <div>
+            <label for="name_owner">Votre nom</label>
+            <input class="input_form" type="text" id="name_owner" name="name_owner" placeholder="Votre nom" required/>
+        </div>
+        <div>
+            <label for="address_restaurant">Adresse du restaurant</label>
+            <input class="input_form" type="text" id="address_restaurant" name="address_restaurant" placeholder="Adresse du restaurant" required/>
+        </div>
+        <div>
+            <label for="phone_restaurant">Téléphone</label>
+            <input class="input_form" type="tel" id="phone_restaurant" name="phone_restaurant" placeholder="Téléphone du restaurant" required/>
+        </div>
+        <div>
+            <label for="mail_restaurant">Email du restaurant</label>
+            <input class="input_form" type="email" id="mail_restaurant" name="mail_restaurant" placeholder="Email du restaurant" required/>
+        </div>
+        <div>
+            <input class="send" type="submit" value="Envoyer">
+        </div>
+    </form>
+    <script>
+        let form = document.querySelector("#form_restaurant_application");
+        let store = document.querySelector("#store");
+        let inputs = document.querySelectorAll("input:not([type='submit'])");
+
+        form.addEventListener("submit", e => {
+            if (store.value === "") {
+                e.preventDefault();
+                alert('Voyer choisir un magasin!!!');
+            } else {
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === "") {
+                        e.preventDefault();
+                        alert('remplir tout les champs!');
+                        i = inputs.length;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="body_form" style="background-image:url(/assets/img/abstract.jpg);">
+    <div id="navbar">
+        <div id="logo">
+            <a href="/"><img src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" /></a>
+        </div>
+    </div>
+
+    <h1 class="form_h1">Formulaire client</h1>
+
+    <form class="form_login" id="form_costumer" action="/add_costumer" method="POST">
+
+        <div class="div_input_form">
+            <label for="last_name_costumer">Nom</label>
+            <input class="input_form" type="text" id="last_name_costumer" name="last_name_costumer" placeholder="Votre nom" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="first_name_costumer">Prénom</label>
+            <input class="input_form" type="text" id="first_name_costumer" name="first_name_costumer" placeholder="Votre prénom" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="phone_costumer">Téléphone</label>
+            <input class="input_form" type="tel" id="phone_costumer" name="phone_costumer" placeholder="Votre téléphone" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="mail_costumer">Email</label>
+            <input class="input_form" type="email" id="mail_costumer" name="mail_costumer" placeholder="Votre email" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="address_costumer">Adresse</label>
+            <input class="input_form" type="text" id="address_costumer" name="address_costumer" placeholder="Votre adresse" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="login_costumer">Pseudo</label>
+            <input class="input_form" type="text" id="login_costumer" name="login_costumer" placeholder="Votre pseudo" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="password_costumer">Mot de passe</label>
+            <input class="input_form" type="password" id="password_costumer" name="password_costumer" placeholder="Votre mot de passe" required/>
+        </div>
+
+        <div class="div_input_form">
+            <label for="conf_password_costumer">Confirmation de mot de passe</label>
+            <input class="input_form" type="password" id="conf_password_costumer" name="conf_password_costumer" placeholder="Confirmation de mot de passe" required/>
+        </div>
+
+        <div class="div_input_form">
+            <input class="send" type="submit" value="Envoyer">
+        </div>
+    </form>
+    <script>
+        let form = document.querySelector("#form_costumer");
+        let inputs = document.querySelectorAll("input:not([type='submit'])");
+
+        let pass = document.querySelector('#password_costumer');
+        let conf_pass = document.querySelector('#conf_password_costumer');
+        form.addEventListener("submit", e => {
+            let form_fill = true;
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "") {
+                    e.preventDefault();
+                    alert('Remplir tout les champs!');
+                    i = inputs.length;
+                    form_fill = false;
+                }
+            }
+            if (form_fill) {
+                if (conf_pass.value !== pass.value) {
+                    e.preventDefault();
+                    conf_pass.value = "";
+                    pass.value = "";
+                    alert("Votre mot de passe et sa confirmation sont différents");
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

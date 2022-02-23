@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body class="body_form" style="background-image:url(/assets/img/abstract.jpg);">
+    <div id="navbar">
+        <div id="logo">
+            <a href="/"><img class="img_logo" src="/assets/img/editePaint.png" alt="logo de Mangez-Chez-Vous" /></a>
+        </div>
+    </div>
+    <h1 class="form_h1">Formulaire de connexion</h1>
+    <form class="form_login" action="/login" method="POST">
+        <div class="div_input_form">
+            <select class="search_bar" name="user_type" id="user_type">
+                    <option value="">--Choisir une option--</option>                    
+                    <option value ="costumer">Connexion client</option>
+                    <option value ="delivery_man">Connexion livreur</option>
+                    <option value ="restaurant">Connexion restaurant</option>
+                    <option value ="mvc_local">Connexion agence mcv</option>                    
+                </select>
+        </div>
+        <div class="div_input_form">
+            <label for="login_user">Pseudo</label>
+            <input class="input_form" type="text" id="login_user" name="login_user" placeholder="Votre pseudo" required/>
+        </div>
+        <div class="div_input_form">
+            <label for="password_user">Mot de pass</label>
+            <input class="input_form" type="password" id="password_user" name="password_user" placeholder="Votre mot de pass" required/>
+        </div>
+        <div class="div_input_form">
+            <input class="send" type="submit" value="Envoyer">
+        </div>
+    </form>
+
+    <script>
+        let form = document.querySelector(".form_login");
+        let inputs = document.querySelectorAll("input:not([type='submit'])");
+        let type = document.querySelector("#user_type");
+        form.addEventListener("submit", e => {
+            if (type.value === "") {
+                e.preventDefault();
+                alert("Choisir une option!")
+            } else {
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === "") {
+                        e.preventDefault();
+                        alert('Remplir tout les champs!');
+                        i = inputs.length;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -32,12 +32,10 @@ app.set("views", path.join(__dirname, "./views"));
 
 const PORT = process.env.PORT || 8080;
 
-db.connect((function(err) {
-    if (err) throw err;
-    console.log("Connected");
-}));
 
 
+const routes = require('./server/routes/routes');
+app.use('/', routes);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
