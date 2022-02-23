@@ -1,4 +1,3 @@
-const mysql = require('mysql');
 const query = require('../models/db_query');
 
 exports.form_restaurant = async(req,res)=>{

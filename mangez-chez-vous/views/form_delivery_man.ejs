@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body class="body_form" style="background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),  rgba(0, 0, 0, 0.5)), url(/assets/img/delivery.jpg);">
+    <div id="navbar">
+        <div id="logo">
+            <a href="/"><img class="img_logo" src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" /></a>
+        </div>
+    </div>
+    <h1 class="form_h1">Formulaire pour devenir livreur</h1>
+    <form class="form_login" id="form_delivery_man" action="/form_delivery_man" method="POST">
+        <div>
+            <select class="div_input_form" name="id_mcv_local" id="id_mcv_local">
+                    <option value="">--Choisir un magasin--</option>
+                    <% stores.forEach( element => { %>
+                       <option value ="<%=element.id_mcv_local%>"><%=element.name_mcv_local%></option>
+                    <%})%>                         
+            </select>
+        </div>
+        <div>
+            <div>
+                <label for="lastname_delivery_man">Nom du candidat</label>
+                <input class="input_form" type="text" id="lastname_delivery_man" name="lastname_delivery_man" placeholder="Votre nom" required/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="firstname_delivery_man">Prénom du candidat</label>
+                <input class="input_form" type="text" id="firstname_delivery_man" name="firstname_delivery_man" placeholder="Votre prénom" required/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="phone_delivery_man">Téléphone</label>
+                <input class="input_form" type="tel" id="phone_delivery_man" name="phone_delivery_man" placeholder="Votre téléphone" required/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="mail_delivery_man">Email</label>
+                <input class="input_form" type="email" id="mail_delivery_man" name="mail_delivery_man" placeholder="Email" required/>
+            </div>
+        </div>
+        <div>
+            <input class="send" type="submit" value="Envoyer">
+        </div>
+    </form>
+    <script>
+        let form = document.querySelector("#form_delivery_man");
+        let store = document.querySelector("#store");
+        let inputs = document.querySelectorAll("input:not([type='submit'])");
+
+        form.addEventListener("submit", e => {
+            if (store.value === "") {
+                e.preventDefault();
+                alert('Voyer choisir un magasin!!!');
+            } else {
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === "") {
+                        e.preventDefault();
+                        alert('remplir tout les champs!');
+                        i = inputs.length;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
