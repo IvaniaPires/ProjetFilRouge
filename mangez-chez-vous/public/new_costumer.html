@@ -52,6 +52,7 @@
         <div class="div_input_form">
             <label for="password">Mot de passe(Minimum 8 caractères et au moins 1: caractère majuscule, caractère minuscule, chiffre, caractère spécial) </label>
             <input class="input_form" type="password" id="password" name="password" placeholder="Votre mot de passe" required/>
+            <span id="pass_state"></span>
         </div>
 
         <div class="div_input_form">
@@ -66,9 +67,29 @@
     <script>
         let form = document.querySelector("#form_costumer");
         let inputs = document.querySelectorAll("input:not([type='submit'])");
-
+        let pass_state = document.querySelector('#pass_state');
         let pass = document.querySelector('#password');
         let conf_pass = document.querySelector('#conf_password');
+
+        function validate(pass) {          
+            return (pass.match( /[0-9]/g) && 
+                    pass.match( /[A-Z]/g) && 
+                    pass.match(/[a-z]/g) && 
+                    pass.match( /[^a-zA-Z\d]/g) &&
+                    pass.length >= 8)                                  
+        }
+        pass.addEventListener('keyup', ()=>{            
+            if(validate(pass.value)){
+                pass.setAttribute("style", "color:#06450c");
+                pass_state.textContent =  "Mot de passe fort";
+                pass_state.setAttribute("style", "color:green");
+            } else {
+                pass.setAttribute("style", "color:red");
+                pass_state.textContent =  "Mot de passe faible";
+                pass_state.setAttribute("style", "color:red");
+            }
+        })
+
         form.addEventListener("submit", e => {
             let form_fill = true;
             for (let i = 0; i < inputs.length; i++) {
@@ -80,12 +101,18 @@
                 }
             }
             if (form_fill) {
-                if (conf_pass.value !== pass.value) {
+                if(!validate(pass.value)){
+                    e.preventDefault();
+                    alert("Mot de pass invalide");
+                } else {
+                    if (conf_pass.value !== pass.value) {
                     e.preventDefault();
                     conf_pass.value = "";
                     pass.value = "";
                     alert("Votre mot de passe et sa confirmation sont différents");
+                    }
                 }
+                
             }
 
         });
