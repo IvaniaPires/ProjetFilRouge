@@ -19,35 +19,35 @@
     <h1 class="form_h1">Formulaire pour devenir livreur</h1>
     <form class="form_login" id="form_delivery_man" action="/form_delivery_man" method="POST">
         <div>
-            <select class="div_input_form" name="id_mcv_local" id="id_mcv_local">
+            <select class="div_input_form" name="store" id="store">
                     <option value="">--Choisir un magasin--</option>
                     <% stores.forEach( element => { %>
                        <option value ="<%=element.id_mcv_local%>"><%=element.name_mcv_local%></option>
                     <%})%>                         
-            </select>
+                </select>
         </div>
         <div>
             <div>
-                <label for="lastname_delivery_man">Nom du candidat</label>
-                <input class="input_form" type="text" id="lastname_delivery_man" name="lastname_delivery_man" placeholder="Votre nom" required/>
+                <label for="last_name_delivery_man">Nom du candidat</label>
+                <input class="input_form" type="text" id="last_name_delivery_man" name="last_name_delivery_man" placeholder="Votre nom" required/>
             </div>
         </div>
         <div>
             <div>
-                <label for="firstname_delivery_man">Prénom du candidat</label>
-                <input class="input_form" type="text" id="firstname_delivery_man" name="firstname_delivery_man" placeholder="Votre prénom" required/>
+                <label for="first_name_delivery_man">Prénom du candidat</label>
+                <input class="input_form" type="text" id="first_name_delivery_man" name="first_name_delivery_man" placeholder="Votre prénom" required/>
             </div>
         </div>
         <div>
             <div>
-                <label for="phone_delivery_man">Téléphone</label>
-                <input class="input_form" type="tel" id="phone_delivery_man" name="phone_delivery_man" placeholder="Votre téléphone" required/>
+                <label for="phone">Téléphone</label>
+                <input class="input_form" type="tel" id="phone" name="phone" placeholder="Votre téléphone" required/>
             </div>
         </div>
         <div>
             <div>
-                <label for="mail_delivery_man">Email</label>
-                <input class="input_form" type="email" id="mail_delivery_man" name="mail_delivery_man" placeholder="Email" required/>
+                <label for="mail">Email</label>
+                <input class="input_form" type="email" id="mail" name="mail" placeholder="Email" required/>
             </div>
         </div>
         <div>

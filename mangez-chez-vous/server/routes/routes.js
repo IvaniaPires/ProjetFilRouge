@@ -3,6 +3,7 @@ const router = express.Router();
 const restaurant_controller = require('../controllers/restaurant_controller');
 const error_controller = require('../controllers/error_controller');
 const delivery_man_controller = require('../controllers/delivery_man_controller');
+const costumer_controller = require('../controllers/costumer_controller');
 
 //App Routes 
 
@@ -21,6 +22,8 @@ router.post('/form_restaurant',restaurant_controller.new_application);
 router.get('/new_delivery_man_application', delivery_man_controller.form_delivery_man);
 router.post('/form_delivery_man', delivery_man_controller.new_application);
 
+//costumer
+router.post('/add_costumer', costumer_controller.register);
 
 module.exports = router;
 

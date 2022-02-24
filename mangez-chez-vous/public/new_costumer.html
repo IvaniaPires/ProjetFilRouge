@@ -30,13 +30,13 @@
         </div>
 
         <div class="div_input_form">
-            <label for="phone_costumer">Téléphone</label>
-            <input class="input_form" type="tel" id="phone_costumer" name="phone_costumer" placeholder="Votre téléphone" required/>
+            <label for="phone">Téléphone</label>
+            <input class="input_form" type="tel" id="phone" name="phone" placeholder="Votre téléphone" required/>
         </div>
 
         <div class="div_input_form">
-            <label for="mail_costumer">Email</label>
-            <input class="input_form" type="email" id="mail_costumer" name="mail_costumer" placeholder="Votre email" required/>
+            <label for="mail">Email</label>
+            <input class="input_form" type="email" id="mail" name="mail" placeholder="Votre email" required/>
         </div>
 
         <div class="div_input_form">
@@ -50,13 +50,13 @@
         </div>
 
         <div class="div_input_form">
-            <label for="password_costumer">Mot de passe</label>
-            <input class="input_form" type="password" id="password_costumer" name="password_costumer" placeholder="Votre mot de passe" required/>
+            <label for="password">Mot de passe(Minimum 8 caractères et au moins 1: caractère majuscule, caractère minuscule, chiffre, caractère spécial) </label>
+            <input class="input_form" type="password" id="password" name="password" placeholder="Votre mot de passe" required/>
         </div>
 
         <div class="div_input_form">
-            <label for="conf_password_costumer">Confirmation de mot de passe</label>
-            <input class="input_form" type="password" id="conf_password_costumer" name="conf_password_costumer" placeholder="Confirmation de mot de passe" required/>
+            <label for="conf_password">Confirmation de mot de passe</label>
+            <input class="input_form" type="password" id="conf_password" name="conf_password" placeholder="Confirmation de mot de passe" required/>
         </div>
 
         <div class="div_input_form">
@@ -67,8 +67,8 @@
         let form = document.querySelector("#form_costumer");
         let inputs = document.querySelectorAll("input:not([type='submit'])");
 
-        let pass = document.querySelector('#password_costumer');
-        let conf_pass = document.querySelector('#conf_password_costumer');
+        let pass = document.querySelector('#password');
+        let conf_pass = document.querySelector('#conf_password');
         form.addEventListener("submit", e => {
             let form_fill = true;
             for (let i = 0; i < inputs.length; i++) {
