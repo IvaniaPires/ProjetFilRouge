@@ -5,10 +5,10 @@ function isEmail(mailuser){
 
 function validatePass (pass){      
     return(pass.match( /[0-9]/g) && 
-            str.match( /[A-Z]/g) && 
-            str.match(/[a-z]/g) && 
-            str.match( /[^a-zA-Z\d]/g) &&
-            str.length >= 8)       
+            pass.match( /[A-Z]/g) && 
+            pass.match(/[a-z]/g) && 
+            pass.match( /[^a-zA-Z\d]/g) &&
+            pass.length >= 8)       
 }
 
 exports.form_verification = (req) => {
