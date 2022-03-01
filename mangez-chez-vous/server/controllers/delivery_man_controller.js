@@ -14,9 +14,9 @@ exports.new_application = async(req, res)=>{
         if(result){
             res.redirect('/confirmation.html')
         } else {
-            res.redirect('/error/3');
+            res.render('error', {error:"Une erreur est survenue lors de l'envoye du formoulaire. Veuillez recommencer.",return_path: "/new_delivery_man_application", return_message:"Formulaire d'inscription"});
         }
     } else {
-        res.render('error_form', {error: verif})
+        res.render('error', {error: verif, return_path: "/new_delivery_man_application", return_message:"Formulaire d'inscription"});
     }    
 }
