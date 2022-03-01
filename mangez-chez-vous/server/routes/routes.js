@@ -4,7 +4,7 @@ const restaurant_controller = require('../controllers/restaurant_controller');
 const error_controller = require('../controllers/error_controller');
 const delivery_man_controller = require('../controllers/delivery_man_controller');
 const costumer_controller = require('../controllers/costumer_controller');
-const conf_register_controller = require('../controllers/conf_register_controller');
+
 //App Routes 
 
 router.get('/',(req, res) => {    
@@ -27,6 +27,6 @@ router.post('/add_costumer', costumer_controller.register);
 
 
 //conf acount
-router.get('/confirm/:code',conf_register_controller.activate);
+router.get('/confirm/:code',costumer_controller.activate);
 module.exports = router;
 

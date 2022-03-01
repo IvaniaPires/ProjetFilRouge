@@ -1,7 +1,8 @@
 const query= require('../models/db_query');
 const regist_controller = require('./regist_controller');
 const bcrypt = require('bcrypt');
-const jwt =require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const jwt_auth = require('../../middleware/jwt_auth');
 const mail_send = require('../models/mail_send');
 
 exports.register = async (req, res) =>{
@@ -24,5 +25,20 @@ exports.register = async (req, res) =>{
         }       
     } else {
         res.render('error_form', {error: verif}) 
+    }
+}
+
+exports.activate = async (req,res)=> {
+    const token = jwt_auth.verifyToken(req); 
+    if(token[0]){
+        const result_login = await query.perform_query("UPDATE costumer SET connected_costumer = 1 WHERE login_costumer = (?)", [token[1]]);
+        if(result_login.affectedRows){
+            res.redirect('/login.html');
+        } else {
+            res.render('error', {error:"Une erreur est survenue. Veuillez recommencer.",return_path: "", return_message:""});
+        }
+    } else {
+        
+        res.render('error', {error: token[1], return_path: "/new_costumer.html", return_message:"Formulaire d'enregistrement"})
     }
 }
