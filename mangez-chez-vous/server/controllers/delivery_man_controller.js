@@ -20,3 +20,7 @@ exports.new_application = async(req, res)=>{
 exports.login = async(req,res) => {
 
 }
+
+exports.logout = async (req,res) => {
+    
+}

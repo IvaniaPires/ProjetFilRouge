@@ -18,8 +18,9 @@
         <%} else {%>
             <ul>
                 <%restaurants.forEach(element => {%>
+                    <% if(element.created_restaurant === 0) {%>
                     <li>
-                        <a class="available_list" href="/new_restaurant/<%=element.id_restaurant_application%>">
+                        <a class="available_list" href="/new_restaurant/<%=element.id_restaurant_application%>/<%= element.id_mcv_local%>">
                             <%=element.name_restaurant%>, Nom du proprietaire:
                                 <%=element.name_owner%>, Adress:
                                     <%=element.address_restaurant%>, Contact telephonique:
@@ -27,7 +28,8 @@
                                             <%=element.mail_restaurant%>
                         </a>
                     </li>
-                    <%});%>
+                    <%}
+                });%>
             </ul>
             <%}%>
                 <div class=div_button>

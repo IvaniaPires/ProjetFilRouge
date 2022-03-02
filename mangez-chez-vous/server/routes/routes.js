@@ -7,6 +7,7 @@ const costumer_controller = require('../controllers/costumer_controller');
 const jwt = require('jsonwebtoken');
 const jwt_auth = require('../../middleware/autho_jwt');
 const store_controller = require('../controllers/store_controller');
+const logout_controller = require('../controllers/logout_controller');
 //App Routes 
 
 router.get('/',(req, res) => {    
@@ -15,11 +16,14 @@ router.get('/',(req, res) => {
 });
 //store
 router.get('/add_restaurant/:id', jwt_auth.verify_token, (req,res,next)=>{     
-    store_controller.add_restaurant(req,res);
-})
+    store_controller.restaurant_to_add(req,res);
+});
 router.get('/stores/:id', jwt_auth.verify_token, (req,res,next)=> {
-
-})
+    store_controller.store_account(req,res);
+});
+router.get('/new_restaurant/:id/:id_store', jwt_auth.verify_token, (req,res,next)=> {
+    store_controller.add_restaurant(req,res);
+});
 
 
 //restaurant
@@ -39,9 +43,15 @@ router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>
     if (req.params.type === '1'){        
         costumer_controller.activate(req,res);
     }
+    if (req.params.type === '2'){        
+        restaurant_controller.activate(req,res);
+    }
 });
 
 //login
-router.post('/login', login_controller.login)
+router.post('/login', login_controller.login);
+
+//logout
+router.get('/logout/:type/:id', logout_controller.logout);
 module.exports = router;
 
