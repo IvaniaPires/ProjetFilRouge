@@ -30,20 +30,32 @@ exports.register = async (req, res) =>{
 
 exports.activate = async (req,res)=> {     
     if(req.user_pseudo){        
-        const result_activate = await query.perform_query("UPDATE costumer SET activated_costumer = 1 WHERE login_costumer = (?)", [req.user_pseudo]);
-        if(result_activate.affectedRows){
-            res.redirect('/login.html')
-        } else {
-            res.render('error', {error:"Une erreur est survenue. Veuillez recommencer.",return_path: "", return_message:""});
-        }
+        const result_activate = await query.perform_query("UPDATE costumer SET activated_costumer = 1 WHERE login_costumer = (?)", [req.user_pseudo]);    
+        res.redirect('/login.html');    
     } else {
         if(req.error === 1){
             res.render('error', {error: "Vous n'êtes pas inscrit ", return_path: "/new_costumer.html", return_message:"Formulaire d'inscription"})
         } else {                       
-            const del_register = await query.perform_query("DELETE FROM costumer WHERE login_costumer = (?)", [req.params.login]);            
-            if(del_register.affectedRows){
-                res.render('error', {error: "Votre inscription a expiré!  ", return_path: "/new_costumer.html", return_message:"Formulaires d'inscription"})
-            }            
+            const del_register = await query.perform_query("DELETE FROM costumer WHERE login_costumer = (?)", [req.params.login]);       
+            res.render('error', {error: "Votre inscription a expiré!  ", return_path: "/new_costumer.html", return_message:"Formulaires d'inscription"})                    
         }
     }
 };
+
+exports.login = async (req,res) => {
+    const {login_user, password_user} = req.body;
+    const result = await query.perform_query("SELECT login_costumer, firstname_costumer, lastname_costumer, activated_costumer, password_costumer FROM costumer WHERE login_costumer = ? LIMIT 1", [login_user]);
+    if(!result || !bcrypt.compareSync(password_user, result[0].password_costumer)){
+        res.render('error', {error: "Login ou mot de passe incorects", return_path: "/login.html", return_message:"Se connecter"})
+    } else {
+        if(result.activated_costumer === 1){            
+        const connected = await query.perform_query("UPDATE costumer SET connected_costumer = 1 WHERE login_costumer = (?)", [login_user]);
+            const token = jwt.sign({ user_pseudo: login_costumer}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
+            res.header('x-access-token', token)
+            res.render('home_costumer', {user: result})
+        } else {
+            res.render('error', {error:"Votre inscription n'est pas activé. Veuillez véréfier votre email!",return_path: "", return_message:""});
+        }       
+
+    }
+}

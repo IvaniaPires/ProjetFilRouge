@@ -1,18 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const restaurant_controller = require('../controllers/restaurant_controller');
-
+const login_controller = require('../controllers/login_controller')
 const delivery_man_controller = require('../controllers/delivery_man_controller');
 const costumer_controller = require('../controllers/costumer_controller');
 const jwt = require('jsonwebtoken');
 const jwt_auth = require('../../middleware/autho_jwt');
+const store_controller = require('../controllers/store_controller');
 //App Routes 
 
 router.get('/',(req, res) => {    
     const dir = __dirname.split('server');    
     res.sendFile(dir[0] + '/public/home.html')
 });
-//general
+//store
+router.get('/add_restaurant/:id', jwt_auth.verify_token, (req,res,next)=>{     
+    store_controller.add_restaurant(req,res);
+})
+router.get('/stores/:id', jwt_auth.verify_token, (req,res,next)=> {
+
+})
 
 
 //restaurant
@@ -28,12 +35,13 @@ router.post('/add_costumer', costumer_controller.register);
 
 
 //conf acount
-
-router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>{    
-    
+router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>{     
     if (req.params.type === '1'){        
         costumer_controller.activate(req,res);
     }
 });
+
+//login
+router.post('/login', login_controller.login)
 module.exports = router;
 

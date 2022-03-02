@@ -3,7 +3,8 @@ require('dotenv').config();
 
 
 exports.verify_token = (req,res,next)=>{
-    const token =  req.body.token || req.query.token || req.headers["x-access-token"] || req.params.code;
+    const token =  req.headers["x-access-token"] || req.params.code || req.cookies['x-access-token'];
+    console.log(req.cookies['x-access-token'])
     if (!token) {
         req.error = 1;        
     }

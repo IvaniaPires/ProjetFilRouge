@@ -11,12 +11,12 @@ exports.new_application = async(req, res)=>{
     if(!verif){
         const {id_mcv_local, last_name_delivery_man, first_name_delivery_man, phone, mail} = req.body;        
         const result = await query.perform_query("INSERT INTO delivery_man_application (id_mcv_local, lastname_delivery_man, firstname_delivery_man, phone_delivery_man, mail_delivery_man) VALUES (?,?,?,?,?)", [id_mcv_local, last_name_delivery_man, first_name_delivery_man, phone, mail]);
-        if(result){
             res.redirect('/confirmation.html')
-        } else {
-            res.render('error', {error:"Une erreur est survenue lors de l'envoye du formoulaire. Veuillez recommencer.",return_path: "/new_delivery_man_application", return_message:"Formulaire d'inscription"});
-        }
     } else {
         res.render('error', {error: verif, return_path: "/new_delivery_man_application", return_message:"Formulaire d'inscription"});
     }    
+}
+
+exports.login = async(req,res) => {
+
 }

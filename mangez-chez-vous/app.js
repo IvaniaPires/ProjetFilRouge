@@ -8,10 +8,13 @@ const bodyParser = require("body-parser");
 const { createSecureServer } = require("http2");
 const nodemailer = require('nodemailer');
 const db = require('./config/db');
+const  cookieParser = require('cookie-parser')
+
 
 require('dotenv').config();
 
 const app = express();
+app.use(cookieParser());
 
 // Parsing middleware
 //pars application/x-www-form-urlencoded

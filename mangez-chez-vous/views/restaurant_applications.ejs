@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+
+</head>
+
+<body>
+    <header style="background-image:url(/assets/img/<%=restaurants[0].img_mcv_local%>)">
+    </header>
+    <h1>Additionner Restaurant</h1>
+    <% if(Object.values(restaurants[0]).length===2) {%>
+        <h3>Il n'y aucan restaurant pour additionner</h3>
+        <%} else {%>
+            <ul>
+                <%restaurants.forEach(element => {%>
+                    <li>
+                        <a class="available_list" href="/new_restaurant/<%=element.id_restaurant_application%>">
+                            <%=element.name_restaurant%>, Nom du proprietaire:
+                                <%=element.name_owner%>, Adress:
+                                    <%=element.address_restaurant%>, Contact telephonique:
+                                        <%=element.phone_restaurant%>, Email:
+                                            <%=element.mail_restaurant%>
+                        </a>
+                    </li>
+                    <%});%>
+            </ul>
+            <%}%>
+                <div class=div_button>
+                    <a class="button" href="/stores/<%=restaurants[0].id_mcv_local%>">
+                        <span>Retour</span>
+                    </a>
+                </div>
+</body>
+
+</html>

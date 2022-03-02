@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body id="body_store">
+    <header style="background-image:linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+          ),url(/assets/img/<%=store[0].img_mcv_local%>)">
+        <div id="navbar">
+            <div id="home_logo">
+                <img src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" />
+            </div>
+            <div>
+                <a href="/disconect/store/<%=store[0].id_mcv_local%>"><img src="/assets/img/logout_icon.png" width="70px" height="60px" alt="se déconnecter"></a>
+            </div>
+        </div>
+    </header>
+    <h1>Mangez-Chez-Vous
+        <%=store[0].name_mcv_local %>
+    </h1>
+    <div class="store_opp">➕</div>
+    <div class="display_restaurants">
+        <a href="/add_restaurant/<%=store[0].id_mcv_local%>">
+            <div class="div_card" style="background-image:url(/assets/img/restaurant.png)">
+                <span class="store_card">
+                        Additionner restaurant
+                    </span>
+            </div>
+        </a>
+        <a href="/add_delivery_man/<%=store[0].id_mcv_local%>">
+            <div class="div_card" style="background-image:url(/assets/img/livraison_logo.png)">
+                <span class="store_card">
+                        Additionner livreur
+                    </span>
+            </div>
+        </a>
+        <a href="/add_location/<%=store[0].id_mcv_local%>">
+            <div class="div_card" style="background-image:url(/assets/img/localisation_logo.png)">
+                <span class="store_card">
+                        Additionner lieu de livraison
+                    </span>
+            </div>
+        </a>
+    </div>
+    <div class="store_opp">➖</div>
+    <div class="display_restaurants">
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/restaurant.png)">
+                <span class="store_card">
+                        Supprimer restaurant
+                    </span>
+            </div>
+        </a>
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/livraison_logo.png)">
+                <span class="store_card">
+                        Supprimer livreur
+                    </span>
+            </div>
+        </a>
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/localisation_logo.png)">
+                <span class="store_card">
+                        Supprimer lieu de livraison
+                    </span>
+            </div>
+        </a>
+    </div>
+    <div class="store_opp">👁️‍🗨️</div>
+    <div class="display_restaurants">
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/restaurant.png)">
+                <span class="store_card">
+                        Afficher restaurants
+                    </span>
+            </div>
+        </a>
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/livraison_logo.png)">
+                <span class="store_card">
+                        Afficher livreurs
+                    </span>
+            </div>
+        </a>
+        <a href="">
+            <div class="div_card" style="background-image:url(/assets/img/localisation_logo.png)">
+                <span class="store_card">
+                        Afficher lieux de livraison
+                    </span>
+            </div>
+        </a>
+    </div>
+    <script>
+        window.addEventListener('scroll', (e) => {
+            e.preventDefault();
+
+            if (window.scrollY > 200) {
+                navbar.style.backgroundColor = '#787878';
+            } else {
+                navbar.style.backgroundColor = 'transparent';
+            }
+        });
+    </script>
+</body>
+
+</html>
