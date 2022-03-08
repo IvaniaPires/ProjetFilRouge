@@ -30,7 +30,12 @@ router.get('/add_delivery_man/:id', jwt_auth.verify_token, (req,res,next)=> {
 router.get('/new_delivery_man/:id/:id_store', jwt_auth.verify_token, (req,res,next)=> {
     store_controller.add_delivery_man(req,res);
 });
-
+router.get('/add_location/:id',  jwt_auth.verify_token, (req,res,next)=> {
+    store_controller.add_location(req,res);
+})
+router.post('/new_location/:id', jwt_auth.verify_token, (req,res,next)=> {
+    store_controller.new_location(req,res);
+})
 
 //restaurant
 router.get('/new_restaurant_application',restaurant_controller.form_restaurant);

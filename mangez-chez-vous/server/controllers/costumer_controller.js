@@ -51,8 +51,11 @@ exports.login = async (req,res) => {
         if(result.activated_costumer === 1){            
         const connected = await query.perform_query("UPDATE costumer SET connected_costumer = 1 WHERE login_costumer = (?)", [login_user]);
             const token = jwt.sign({ user_pseudo: login_costumer}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
-            res.header('x-access-token', token)
-            res.render('home_costumer', {user: result})
+            res.cookie("x-access-token", token, {
+                secure: true,
+                httpOnly: true,
+                maxAge: 4*60*60*1000
+            });
         } else {
             res.render('error', {error:"Votre inscription n'est pas activé. Veuillez véréfier votre email!",return_path: "", return_message:""});
         }       

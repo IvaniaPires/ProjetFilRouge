@@ -15,7 +15,8 @@ exports.login = async (req,res) => {
         const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
         res.cookie("x-access-token", token, {
             secure: true,
-            httpOnly: true
+            httpOnly: true,
+            maxAge: 4*60*60*1000
         });
         res.render('store_acount', {store: result})    
     }
@@ -115,3 +116,36 @@ exports.add_delivery_man = async (req,res) =>{
         res.render('error', {error: "Vous devez vous connecter pour accèder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
     }
 }
+
+exports.add_location = async (req,res) =>{
+    const connected = await query.perform_query("SELECT connected_mcv_local FROM mcv_local WHERE id_mcv_local = ? LIMIT 1", [req.params.id]);
+    if(connected[0].connected_mcv_local === 1 && req.user_pseudo){
+        res.render('form_location',  { id_mcv_local: req.params.id } );
+    } else {
+        res.render('error', {error: "Vous devez vous connecter pour accèder à cette page.", return_path: "/login.html", return_message:"Se connecter"});
+    }
+}
+
+exports.new_location = async (req,res) => {
+    const id = req.params.id;
+    const connected = await query.perform_query("SELECT connected_mcv_local FROM mcv_local WHERE id_mcv_local = ? LIMIT 1", [id]);
+    if(connected[0].connected_mcv_local === 1 && req.user_pseudo){
+        const verif = regist_controller.form_verification(req);
+        if(!verif){
+            const {name_location, postal_code, departement, delivery_price} = req.body;
+            console.log(name_location)
+            const location = await query.perform_query("SELECT * FROM location WHERE id_mcv_local = ? AND name_location = ? AND postal_code =?", [id, name_location, postal_code]);
+            if (location.length!==0){
+                res.render('error', {error: "Vous avez déjà additionner cette localisation.", return_path: `/add_location/ ${id}` , return_message:"Additionner localisation"});
+            } else {
+                const new_location = await query.perform_query("INSERT INTO location (name_location, postal_code, departement, delivery_price, id_mcv_local) VALUES (?,?,?,?,?)", [name_location, postal_code, departement, delivery_price, id]);
+                res.render('confirmation', {confmsg: "Localisation additionnée.", return_path: `/stores/ ${id}` , return_message:"Home"});
+            }  
+        } else {
+            res.render('error', {error: verif, return_path:  `form_location/ ${id}`, return_message:"Additionner localisation"});
+        }
+    } else {
+        res.render('error', {error: "Vous devez vous connecter pour accèder à cette page.", return_path: "/login.html", return_message:"Se connecter"});
+    }
+}
+
