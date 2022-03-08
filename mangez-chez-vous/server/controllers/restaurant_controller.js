@@ -13,7 +13,7 @@ exports.new_application = async(req, res)=>{
     if(!verif){
         const {id_mcv_local, name_restaurant, name_owner, address_restaurant, phone, mail} = req.body;    
         const result = await query.perform_query("INSERT INTO restaurant_application (id_mcv_local, name_restaurant, name_owner, address_restaurant, phone_restaurant, mail_restaurant) VALUES (?,?,?,?,?,?)", [id_mcv_local, name_restaurant, name_owner, address_restaurant, phone, mail]);
-            res.redirect('/confirmation.html')
+        res.render('confirmation', {confmsg: "Votre candidature a été envoyée ", return_path: "", return_message:""});
     } else {
         res.render('error', {error: verif, return_path: "/new_restaurant_application", return_message:"Formulaire d'inscription"});
     } 
@@ -31,6 +31,7 @@ exports.activate = async (req,res) => {
             res.render('error', {error: "Vous n'êtes pas inscrit ", return_path: "/form_restaurant", return_message:"Formulaire pour devenir restaurant partenaire"})
         } else {                                  
             const untreated= await query.perform_query("UPDATE restaurant_application SET created_restaurant = ? WHERE id_restaurant_application = ?", [0 ,parts[0]]);      
+            const delete_created = await query.perform_query("DELETE from restaurant WHERE login_restaurant = ?", [req.params.login]);
             res.render('error', {error: "Votre inscription a expiré! Veuillez recontacter le magasin", return_path: "", return_message:""})                    
         }
     }

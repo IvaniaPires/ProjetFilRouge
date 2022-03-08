@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>RÉUSSITE</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/assets/img/editePaint.png">
+</head>
+
+<body id="error">
+    <h1>RÉUSSITE</h1>
+    <p>
+        <%= confmsg %>
+    </p>
+    <img src="/assets/img/succes.jpg" />
+    <%if(return_path!==""){%>
+        <button>      
+      <a href="<%= return_path %>">
+          <%= return_message %>
+      </a>
+    </button>
+        <% }%>
+</body>
+
+</html>

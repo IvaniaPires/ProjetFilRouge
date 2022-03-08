@@ -17,7 +17,7 @@ exports.register = async (req, res) =>{
             if(result){
                 const token = jwt.sign({ user_pseudo: login_costumer}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "1d"});
                 mail_send.send_mail("Mangez-Chez-Vous: Confirmation d'inscription", mail, token, login_costumer, 1);
-                res.redirect('/confirmation.html');
+                res.render('confirmation', {confmsg: "Un email vous a été envoyé pour créer un compte ", return_path: "", return_message:""});
             } else {
                 res.render('error', {error:"Une erreur est survenue lors de l'envoye du formoulaire. Veuillez recommencer.",return_path: "/new_costumer.html", return_message:"Formulaire d'inscription"});
             }    

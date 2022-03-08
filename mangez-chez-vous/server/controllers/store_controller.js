@@ -76,3 +76,42 @@ exports.logout = async (req,res) => {
     const logout = query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE id_mcv_local = ?", [0, req.params.id]);
     res.redirect('/home.html');
 }
+
+exports.delivery_man_to_add = async (req,res) => {
+    const id = req.params.id;
+    const store = await query.perform_query("SELECT img_mcv_local, id_mcv_local, connected_mcv_local FROM mcv_local WHERE id_mcv_local = ?", [id]);   
+    if(store[0].connected_mcv_local === 1 && req.user_pseudo){        
+        const result = await query.perform_query("SELECT delivery_man_application.*, mcv_local.img_mcv_local FROM delivery_man_application INNER JOIN mcv_local ON delivery_man_application.id_mcv_local = mcv_local.id_mcv_local WHERE delivery_man_application.id_mcv_local = ? AND delivery_man_application.created_delivery_man = ? ", [id, 0]);        
+        if (result.length !==0){
+            res.render('delivery_man_applications', {delivery_mens : result})
+        }else {            
+            res.render('delivery_man_applications', {delivery_mens : store})
+        }
+    } else {
+        if(result[0].connected_mcv_local === 1){
+            const connected = await query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE id_mcv_local = ?", [0, id]);
+        }
+        res.render('error', {error: "Vous devez vous connecter pour acceder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
+    }
+}
+
+exports.add_delivery_man = async (req,res) =>{
+    const id = req.params.id_store;
+    const connected = await query.perform_query("SELECT connected_mcv_local FROM mcv_local WHERE id_mcv_local = ? LIMIT 1", [id]);
+    if(connected[0].connected_mcv_local === 1 && req.user_pseudo){
+        const password_delivery_man = generate_pass.random_pass();        
+        const hash_password_delivery_man = bcrypt.hashSync(password_delivery_man, 10);
+        const result = await query.perform_query("SELECT * FROM delivery_man_application WHERE id_delivery_man_application = ? LIMIT 1", [req.params.id]);
+        const login_delivery_man = req.params.id + "_" + result[0].lastname_delivery_man ;
+        const new_delivery_man = await query.perform_query("INSERT INTO delivery_man (id_mcv_local, lastname_delivery_man, firstname_delivery_man,    phone_delivery_man, mail_delivery_man, login_delivery_man, password_delivery_man) VALUES (?,?,?,?,?,?,?)", [id, result[0].lastname_delivery_man, result[0].firstname_delivery_man, result[0].phone_delivery_man, result[0].mail_delivery_man, login_delivery_man, hash_password_delivery_man]);
+        const treated = await query.perform_query("UPDATE delivery_man_application SET created_delivery_man = ? WHERE id_delivery_man_application =?", [1,req.params.id]);
+        const token = jwt.sign({ user_pseudo: login_delivery_man}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "7d"});
+                mail_send.send_mail(`Mangez-Chez-Vous: Confirmation d'inscription. /n ☛Login:  ${login_delivery_man} ☛Mot de passe: ${password_delivery_man}`, result[0].mail_delivery_man, token, login_delivery_man, 3);
+                res.redirect(`/add_delivery_man/${id}`);
+    } else {
+        if(result[0].connected_mcv_local === 1){
+            const connected = await query.perform_query("UPDATE mcv_local SET connected_mcv_local = 0 WHERE id_mcv_local = (?)", [id]);
+        }
+        res.render('error', {error: "Vous devez vous connecter pour accèder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
+    }
+}

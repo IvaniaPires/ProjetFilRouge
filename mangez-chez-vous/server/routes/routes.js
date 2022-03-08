@@ -24,6 +24,12 @@ router.get('/stores/:id', jwt_auth.verify_token, (req,res,next)=> {
 router.get('/new_restaurant/:id/:id_store', jwt_auth.verify_token, (req,res,next)=> {
     store_controller.add_restaurant(req,res);
 });
+router.get('/add_delivery_man/:id', jwt_auth.verify_token, (req,res,next)=> {
+    store_controller.delivery_man_to_add(req,res);
+});
+router.get('/new_delivery_man/:id/:id_store', jwt_auth.verify_token, (req,res,next)=> {
+    store_controller.add_delivery_man(req,res);
+});
 
 
 //restaurant
@@ -33,6 +39,7 @@ router.post('/form_restaurant',restaurant_controller.new_application);
 //delivery_man
 router.get('/new_delivery_man_application', delivery_man_controller.form_delivery_man);
 router.post('/form_delivery_man', delivery_man_controller.new_application);
+
 
 //costumer
 router.post('/add_costumer', costumer_controller.register);
@@ -45,6 +52,9 @@ router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>
     }
     if (req.params.type === '2'){        
         restaurant_controller.activate(req,res);
+    }
+    if (req.params.type === '3'){        
+        delivery_man_controller.activate(req,res);
     }
 });
 
