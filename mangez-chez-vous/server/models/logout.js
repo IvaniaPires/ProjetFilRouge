@@ -1,10 +1,11 @@
-const costumer_controller = require('./costumer_controller');
-const delivery_man_controller = require('./delivery_man_controller');
-const restaurant_controller = require('./regist_controller');
-const store_controller = require('./store_controller');
+const costumer_controller = require('../controllers/costumer_controller');
+const delivery_man_controller = require('../controllers/delivery_man_controller');
+const restaurant_controller = require('../controllers/regist_controller');
+const store_controller = require('../controllers/store_controller');
 
 exports.logout = (req,res) => {
-    const user_type = req.body.user_type;    
+    const user_type = req.params.type;
+    console.log(user_type)    
     switch (user_type) {
         case 'costumer':
             costumer_controller.logout(req,res);

@@ -44,18 +44,19 @@ exports.activate = async (req,res)=> {
 
 exports.login = async (req,res) => {
     const {login_user, password_user} = req.body;
-    const result = await query.perform_query("SELECT login_costumer, firstname_costumer, lastname_costumer, activated_costumer, password_costumer FROM costumer WHERE login_costumer = ? LIMIT 1", [login_user]);
+    const result = await query.perform_query("SELECT id_costumer, login_costumer, firstname_costumer, lastname_costumer, activated_costumer, password_costumer FROM costumer WHERE login_costumer = ? LIMIT 1", [login_user]);
     if(!result || !bcrypt.compareSync(password_user, result[0].password_costumer)){
         res.render('error', {error: "Login ou mot de passe incorects", return_path: "/login.html", return_message:"Se connecter"})
-    } else {
-        if(result.activated_costumer === 1){            
+    } else {        
+        if(result[0].activated_costumer === 1){            
         const connected = await query.perform_query("UPDATE costumer SET connected_costumer = 1 WHERE login_costumer = (?)", [login_user]);
-            const token = jwt.sign({ user_pseudo: login_costumer}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
+            const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
             res.cookie("x-access-token", token, {
-                secure: true,
-                httpOnly: true,
-                maxAge: 4*60*60*1000
-            });
+            secure: true,
+            httpOnly: true,
+            maxAge: 4*60*60*1000
+        });
+        res.render('home_costumer', {user: result})
         } else {
             res.render('error', {error:"Votre inscription n'est pas activé. Veuillez véréfier votre email!",return_path: "", return_message:""});
         }       
@@ -64,5 +65,6 @@ exports.login = async (req,res) => {
 }
 
 exports.logout = async (req,res) => {
-    
+    const logout = query.perform_query("UPDATE costumer SET connected_costumer = ? WHERE id_costumer = ?", [0, req.params.id]);
+    res.redirect('/home.html');
 }

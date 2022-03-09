@@ -1,7 +1,7 @@
-const costumer_controller = require('./costumer_controller');
-const delivery_man_controller = require('./delivery_man_controller');
-const restaurant_controller = require('./restaurant_controller');
-const store_controller = require('./store_controller');
+const costumer_controller = require('../controllers/costumer_controller');
+const delivery_man_controller = require('../controllers/delivery_man_controller');
+const restaurant_controller = require('../controllers/restaurant_controller');
+const store_controller = require('../controllers/store_controller');
 
 exports.login = (req,res) => {
     const user_type = req.body.user_type;    

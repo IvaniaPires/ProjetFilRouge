@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const restaurant_controller = require('../controllers/restaurant_controller');
-const login_controller = require('../controllers/login_controller')
+const login_controller = require('../models/login')
 const delivery_man_controller = require('../controllers/delivery_man_controller');
 const costumer_controller = require('../controllers/costumer_controller');
 const jwt = require('jsonwebtoken');
 const jwt_auth = require('../../middleware/autho_jwt');
 const store_controller = require('../controllers/store_controller');
-const logout_controller = require('../controllers/logout_controller');
+const logout_controller = require('../models/logout');
 //App Routes 
 
 router.get('/',(req, res) => {    
