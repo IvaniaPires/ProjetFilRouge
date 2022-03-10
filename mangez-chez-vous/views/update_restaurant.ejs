@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" href="/assets/img/editePaint.png">
+    <meta charset="utf-8">
+    <title>Mangez-Chez-Vous</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="body_form" style="background-image:url(/assets/img/abstract.jpg);">
+    <header style="background-image:linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+          ),url(/assets/img/<%=restaurant[0].img_restaurant%>)">
+        <div id="navbar">
+            <div id="home_logo">
+                <img src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" />
+            </div>            
+        </div>
+    </header>
+    <h1>Restaurant
+        <%=restaurant[0].name_restaurant %>
+    </h1>
+    <form class="form_login " method="post" enctype="multipart/form-data" action="/update_restaurant/<%=restaurant[0].id_restaurant%>">
+        <div class="div_input_form">
+            <label for="image">Changer image du restaurant</label>
+            <input class="input_form" type="file" id="img_restaurant" name="img_restaurant" accept="image/*"/>
+        </div>
+        <div class="div_input_form">
+            <label for="login">Pseudo (*)</label>
+            <input class="input_form" type="text" id="login" name="login" placeholder="<%=restaurant[0].login_restaurant%>" value="<%=restaurant[0].login_restaurant%>"/>
+        </div>         
+        <div class="div_input_form">
+            <label for="phone">Téléphone (*)</label>
+            <input class="input_form" type="tel" id="phone" name="phone" placeholder="<%=restaurant[0].phone_restaurant%>" value="<%=restaurant[0].phone_restaurant%>"/>
+        </div>
+        <div class="div_input_form">
+            <label for="mail">Email du restaurant (*)</label>
+            <input class="input_form" type="email" id="mail" name="mail" placeholder="<%=restaurant[0].mail_restaurant%>" value="<%=restaurant[0].mail_restaurant%>"/>
+        </div>
+        <div class="div_input_form">
+            <label for="password">Mot de passe(Minimum 8 caractères et au moins 1: caractère majuscule, caractère minuscule, chiffre, caractère spécial)(*) </label>
+            <input class="input_form" type="password" id="password" name="password" placeholder="Votre mot de passe" />
+            <span id="pass_state"></span>
+        </div>
+
+        <div class="div_input_form">
+            <label for="conf_password">Confirmation de mot de passe(*)</label>
+            <input class="input_form" type="password" id="conf_password" name="conf_password" placeholder="Confirmation de mot de passe" />
+        </div>
+        
+        <div class="div_input_form">
+            <input class="send" type="submit" value="Envoyer">
+        </div>        
+    </form>
+    <div class=div_button>
+        <a class="button" href="/restaurants/<%=restaurant[0].id_restaurant%>">
+            <span>Retour</span>
+        </a>
+    </div>
+
+    <script>
+        let pass_state = document.querySelector('#pass_state');
+        let pass = document.querySelector('#password');
+        let conf_pass = document.querySelector('#conf_password');
+        let form = document.querySelector("form");
+        let inputs = document.querySelectorAll("input:not([type='password'])");
+
+        function validate(pass) {          
+            return (pass.match( /[0-9]/g) && 
+                    pass.match( /[A-Z]/g) && 
+                    pass.match(/[a-z]/g) && 
+                    pass.match( /[^a-zA-Z\d]/g) &&
+                    pass.length >= 8)                                  
+        };
+        pass.addEventListener('keyup', ()=>{            
+            if(validate(pass.value)){
+                pass.setAttribute("style", "color:#06450c");
+                pass_state.textContent =  "Mot de passe fort";
+                pass_state.setAttribute("style", "color:green");
+            } else {
+                pass.setAttribute("style", "color:red");
+                pass_state.textContent =  "Mot de passe faible";
+                pass_state.setAttribute("style", "color:red");
+            }
+        });
+        form.addEventListener("submit", e => {
+            let form_fill = true;
+            for (let i = 1; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "" && i!==2) {
+                    e.preventDefault();
+                    alert('Remplir tout les champs obligatoires (*)!');
+                    i = inputs.length;
+                    form_fill = false;
+                }
+            }
+            if (form_fill && pass.value!=="") {
+                if(!validate(pass.value)){
+                    e.preventDefault();
+                    alert("Mot de pass invalide");
+                } else {
+                    if (conf_pass.value !== pass.value) {
+                    e.preventDefault();
+                    conf_pass.value = "";
+                    pass.value = "";
+                    alert("Votre mot de passe et sa confirmation sont différents");
+                    }
+                }
+                
+            }
+        })
+
+    </script>
+</body>
+
+</html>

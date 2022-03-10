@@ -65,6 +65,10 @@ exports.login = async (req,res) => {
 }
 
 exports.logout = async (req,res) => {
-    const logout = query.perform_query("UPDATE costumer SET connected_costumer = ? WHERE id_costumer = ?", [0, req.params.id]);
+    const logout = await query.perform_query("UPDATE costumer SET connected_costumer = ? WHERE id_costumer = ?", [0, req.params.id]);
     res.redirect('/home.html');
+}
+
+exports.search_location = async (req,res) => {
+    
 }

@@ -39,7 +39,7 @@
     </form>
     <script>
         let form = document.querySelector("#new_location");
-        let inputs = document.querySelectorAll("input:not([type='submit'])");
+        let inputs = document.querySelectorAll("input");
         form.addEventListener("submit", e => {
             for (let i = 0; i < inputs.length; i++) {
                 if (inputs[i].value.trim() === "") {

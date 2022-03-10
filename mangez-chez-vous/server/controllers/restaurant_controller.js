@@ -37,18 +37,22 @@ exports.activate = async (req,res) => {
     }
 }
 
+
+
 exports.login = async(req,res) => {
     const {login_user, password_user} = req.body;
-    const result = await query.perform_query("SELECT * FROM restaurant WHERE login_restaurant = ? LIMIT 1", [login_user]);    
+    const result = await query.perform_query("SELECT * FROM restaurant WHERE login_restaurant = ? LIMIT 1", [login_user]);
+    
     if(result.length ===0 || !bcrypt.compareSync(password_user, result[0].password_restaurant)){
         res.render('error', {error: "Login ou mot de passe incorects", return_path: "/login.html", return_message:"Se connecter"})
     } else {        
         if(result[0].activated_restaurant === 1){            
         const connected = await query.perform_query("UPDATE restaurant SET connected_restaurant = ? WHERE id_restaurant = ?", [1, result[0].id_restaurant]);
-        const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
+        const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "23h"});
         res.cookie("x-access-token", token, {
             secure: true,
-            httpOnly: true
+            httpOnly: true,
+            maxAge: 23*60*60*1000
         });
         res.render('restaurant_acount', {restaurant: result});
         } else {
@@ -59,5 +63,71 @@ exports.login = async(req,res) => {
 }
 
 exports.logout = async (req,res) => {
-    
+    const logout = await query.perform_query("UPDATE restaurant SET connected_restaurant = ? WHERE id_restaurant = ?", [0, req.params.id]);
+    res.redirect('/home.html');
 }
+
+exports.update_restaurant = async (req,res) => {
+    const id = req.params.id;
+    const restaurant = await query.perform_query("SELECT * FROM restaurant WHERE id_restaurant = ?", [id]);   
+    if(restaurant[0].connected_restaurant === 1 && req.user_pseudo){        
+        res.render('update_restaurant', {restaurant : restaurant});
+    } else {
+        if(restaurant[0].connected_restaurant === 1){
+            const connected = await query.perform_query("UPDATE restaurant SET connected_restaurant = ? WHERE id_restaurant = ?", [0, id]);
+        }
+        res.render('error', {error: "Vous devez vous connecter pour acceder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
+    }
+}
+
+exports.change_restaurant = async (req,res) => {
+    const restaurant = await query.perform_query("SELECT * FROM restaurant WHERE id_restaurant = ? LIMIT 1", [req.params.id]);
+    if(restaurant[0].connected_restaurant === 1 && req.user_pseudo){           
+        const verif = regist_controller.form_verification(req);       
+            if (!verif){                
+                const {password, login, phone, mail } = req.body;                
+                const login_result = await query.perform_query('SELECT id_restaurant FROM restaurant WHERE login_restaurant = ?', [login]);
+                
+                if(login_result.length===0||(login_result.length===1 && login_result[0].id_restaurant ===  parseInt(req.params.id))){
+                    let new_image_name='restaurant.png';
+                    if(req.files){                    
+                        let image_to_upload;
+                        let upload_path;                    
+                        image_to_upload = req.files.img_restaurant;
+                        new_image_name = Date.now() + image_to_upload.name;
+                        upload_path = require('path').resolve('./') + '/public/assets/uploads/' + new_image_name;        
+                        image_to_upload.mv(upload_path, async function(err){
+                            if(err) throw err;                        
+                        })
+                    }
+                    const password_restaurant = bcrypt.hashSync(password, 10);
+                    const update_restaurant = await query.perform_query('UPDATE restaurant SET img_restaurant = ?, password_restaurant = ?, login_restaurant = ?, phone_restaurant = ?, mail_restaurant = ? WHERE id_restaurant = ?', [new_image_name,  password_restaurant, login, phone, mail, req.params.id]);
+                    res.render('confirmation', {confmsg: "Changement de données effectué avec succès.", return_path: `/restaurants/${req.params.id} ` , return_message:"Espace Restaurant"});   
+                } else {
+                    res.render('error', {error: "Ce login est déjà pris.", return_path:`/update_restaurant/${req.params.id} `, return_message:"Retour"});
+                }
+                      
+            } else {
+                res.render('error', {error: verif, return_path:"/update_restaurant/"+ req.params.id, return_message:"Retour"});
+            }
+         
+    } else {
+        if(restaurant[0].connected_restaurant === 1){
+            const connected = await query.perform_query("UPDATE restaurant SET connected_restaurant = ? WHERE id_restaurant = ?", [0, id]);
+        }
+        res.render('error', {error: "Vous devez vous connecter pour acceder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
+    }
+}
+
+exports.restaurant_account = async (req,res) =>{    
+    const result = await query.perform_query("SELECT * FROM restaurant WHERE id_restaurant = ? LIMIT 1", [req.params.id]);
+    if(result[0].connected_restaurant === 1 && req.user_pseudo){
+        res.render('restaurant_acount', {restaurant: result});
+    } else {
+        if(result[0].connected_restaurant === 1){
+            const connected = await query.perform_query("UPDATE restaurant SET connected_restaurant = 0 WHERE id_restaurant = (?)", [req.params.id]);
+        }
+        res.render('error', {error: "Vous devez vous connecter pour accèder à cette page.", return_path: "/login.html", return_message:"Se connecter"})
+    } 
+}
+

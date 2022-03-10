@@ -18,7 +18,7 @@ exports.form_verification = (req) => {
         });
         if(req.body.mail && !isEmail(req.body.mail)) throw "Adresse email invalide!";
         if(req.body.password && !validatePass(req.body.password)) throw "Mot de passe invalide!";
-        if(req.body.phone && req.body.phone.length<10) throw "Numéro de téléphone invalide"
+        if(req.body.phone && req.body.phone.length<10) throw "Numéro de téléphone invalide"        
         if(req.body.password && (req.body.password!==req.body.conf_password)) throw "Le mot de passe et sa confirmation doivent être identiques";
     } catch(err){
         return(err);

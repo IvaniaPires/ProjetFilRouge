@@ -54,7 +54,7 @@
     <script>
         let form = document.querySelector("#form_restaurant_application");
         let store = document.querySelector("#store");
-        let inputs = document.querySelectorAll("input:not([type='submit'])");
+        let inputs = document.querySelectorAll("input");
 
         form.addEventListener("submit", e => {
             if (store.value === "") {

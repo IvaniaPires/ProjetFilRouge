@@ -41,7 +41,7 @@
 
     <script>
         let form = document.querySelector(".form_login");
-        let inputs = document.querySelectorAll("input:not([type='submit'])");
+        let inputs = document.querySelectorAll("input");
         let type = document.querySelector("#user_type");
         form.addEventListener("submit", e => {
             if (type.value === "") {

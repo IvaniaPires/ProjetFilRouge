@@ -1,8 +1,7 @@
 let open_menu = document.querySelector('#navbar_hamburger_icon');
 let menu = document.querySelector("#navbar_menu");
 let navbar = document.querySelector("#navbar");
-let accordion = document.querySelector('#accordion');
-let span_accordion = document.querySelector('#span_accordion');
+
 
 open_menu.addEventListener('click', e =>{
     e.preventDefault();
@@ -28,12 +27,6 @@ window.addEventListener('scroll', (e)=> { // To listen for event
     }
 });
 
-accordion.addEventListener('click', ()=> {
-    span_accordion.classList.toggle("span_accordion");
-    console.log(span_accordion.classList.contains("span_accordion"));
-    accordion.classList.toggle("more");
-    accordion.classList.toggle("less");
-})
 
 
 

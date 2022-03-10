@@ -2,21 +2,37 @@
 <html lang="fr">
 
 <head>
-    <link rel="icon" href="../public/assets/img/editePaint.png">
+    <link rel="icon" href="/assets/img/editePaint.png">
     <meta charset="utf-8">
     <title>Mangez-Chez-Vous</title>
     <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/script.js" async></script>
 </head>
 
 <body>
-    <header>
+    <header style="background-image:linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+          ),url(/assets/uploads/<%=restaurant[0].img_restaurant%>)">
         <div id="navbar">
             <div id="home_logo">
                 <img src="/assets/img/editePaint.png" width="70px" height="60px" alt="logo de Mangez-Chez-Vous" />
+            </div>            
+            <div id="navbar_hamburger_icon">
+                <!-- Quelques spans pour faire office de hamburguer -->
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div>
-                <a href="/logout/<%=restaurant[0].id_restaurant%>">Déconnexion</a>>
-            </div>
+            <!-- Elements du menu -->
+            <nav role="navigation" id="navbar_menu">
+                <ul>
+                    <li><a href="/logout/restaurant/<%=restaurant[0].id_restaurant%>">SE DECONNECTER</a></li>
+                    <li><a href="/update_restaurant/<%=restaurant[0].id_restaurant%>">CHANGER DONNÉES</a></li>
+                    <li><a href="/products/<%=restaurant[0].id_restaurant%>">PRODUITS</a></li>
+                    <li><a href="/orders_history/<%=restaurant[0].id_restaurant%>">HISTORIQUE DES COMMANDES</a></li>                    
+                </ul>
+            </nav>
         </div>
     </header>
     <h1>Restaurant

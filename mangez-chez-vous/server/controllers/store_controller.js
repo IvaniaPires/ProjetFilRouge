@@ -74,7 +74,7 @@ exports.add_restaurant = async (req,res) => {
 }
 
 exports.logout = async (req,res) => {
-    const logout = query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE id_mcv_local = ?", [0, req.params.id]);
+    const logout = await query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE id_mcv_local = ?", [0, req.params.id]);
     res.redirect('/home.html');
 }
 

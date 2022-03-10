@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 //parse application /json
 app.use(bodyParser.json());
 
+app.use(fileUpload());
+
 //static files
 app.use(express.static(path.join(__dirname, '/public')))
     .use(express.urlencoded({
@@ -34,7 +36,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 
 const PORT = process.env.PORT || 8080;
-
+app.use(express.urlencoded( { extended: true } ));
+app.use(express.static('/public'));
 
 
 const routes = require('./server/routes/routes');

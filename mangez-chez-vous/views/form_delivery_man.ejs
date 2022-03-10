@@ -57,7 +57,7 @@
     <script>
         let form = document.querySelector("#form_delivery_man");
         let store = document.querySelector("#store");
-        let inputs = document.querySelectorAll("input:not([type='submit'])");
+        let inputs = document.querySelectorAll("input");
 
         form.addEventListener("submit", e => {
             if (store.value === "") {
