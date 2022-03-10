@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const restaurant_controller = require('../controllers/restaurant_controller');
-const login_controller = require('../models/login')
+const login = require('../models/login')
 const delivery_man_controller = require('../controllers/delivery_man_controller');
 const costumer_controller = require('../controllers/costumer_controller');
 const jwt_auth = require('../../middleware/autho_jwt');
 const store_controller = require('../controllers/store_controller');
-const logout_controller = require('../models/logout');
+const logout = require('../models/logout');
 
 //App Routes 
 
@@ -60,6 +60,7 @@ router.post('/form_delivery_man', delivery_man_controller.new_application);
 //costumer
 router.post('/add_costumer', costumer_controller.register);
 router.post('/search', costumer_controller.search_location);
+router.get('/location/:id', costumer_controller.location_restaurants);
 
 //conf acount
 router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>{     
@@ -75,10 +76,10 @@ router.get('/confirm/:code/:login/:type',jwt_auth.verify_token, (req,res,next)=>
 });
 
 //login
-router.post('/login', login_controller.login);
+router.post('/login', login.login);
 
 //logout
-router.get('/logout/:type/:id', logout_controller.logout);
+router.get('/logout/:type/:id', logout.logout);
 
 
 module.exports = router;

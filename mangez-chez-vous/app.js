@@ -1,13 +1,8 @@
 const express = require('express');
 const path = require("path");
-const expressLayouts = require('express-ejs-layouts');
 const fileUpload = require('express-fileupload');
-const mysql = require('mysql');
-const bcrypt = require('bcrypt');
 const bodyParser = require("body-parser");
 const { createSecureServer } = require("http2");
-const nodemailer = require('nodemailer');
-const db = require('./config/db');
 const  cookieParser = require('cookie-parser')
 
 
@@ -36,8 +31,6 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 
 const PORT = process.env.PORT || 8080;
-app.use(express.urlencoded( { extended: true } ));
-app.use(express.static('/public'));
 
 
 const routes = require('./server/routes/routes');

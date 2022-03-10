@@ -70,5 +70,12 @@ exports.logout = async (req,res) => {
 }
 
 exports.search_location = async (req,res) => {
-    
+    console.log(req.body.search_bar)
+    const locations = await query.perform_query("SELECT name_location, departement, postal_code, id_mcv_local FROM location WHERE name_location = ?", [req.body.search_bar]);
+    res.render("result_location.ejs", { locations: locations });
+}
+
+exports.location_restaurants = async (req,res) => {
+    const restaurants = await query.perform_query("SELECT name_restaurant, open_restaurant, id_restaurant, img_restaurant FROM restaurant WHERE id_mcv_local = ?", [req.params.id]);
+    res.render("location_restaurants.ejs", { restaurants: restaurants });
 }

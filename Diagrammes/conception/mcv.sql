@@ -18,8 +18,6 @@ DROP TABLE IF EXISTS restaurant;
 
 DROP TABLE IF EXISTS delivery_man_application;
 
-DROP TABLE IF EXISTS reply_mail;
-
 DROP TABLE IF EXISTS restaurant_application;
 
 DROP TABLE IF EXISTS costumer;
@@ -57,6 +55,7 @@ CREATE TABLE costumer (
     address_costumer varchar (100) DEFAULT NULL,
     connected_costumer tinyint (1) DEFAULT 0,
     fidelity_points_costumer int (5) DEFAULT 0,
+	activated_costumer tinyint (1) DEFAULT 0,
     PRIMARY KEY (id_costumer)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -67,19 +66,12 @@ CREATE TABLE restaurant_application (
     name_owner varchar(80) NOT NULL,
     phone_restaurant varchar(30) NOT NULL,
     mail_restaurant varchar(50) NOT NULL,
+	created_restaurant tinyint (1) DEFAULT 0,
     id_mcv_local int NOT NULL,
     PRIMARY KEY (id_restaurant_application),
     CONSTRAINT restaurant_application_ibfk_1 FOREIGN KEY (id_mcv_local) REFERENCES mcv_local (id_mcv_local)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-CREATE TABLE reply_mail (
-    id_reply_mail int NOT NULL AUTO_INCREMENT,
-    mail_content text NOT NULL,
-    send_mail varchar(50) NOT NULL,
-    id_mcv_local int NOT NULL,
-    PRIMARY KEY (id_reply_mail),
-    CONSTRAINT reply_mail_ibfk_1 FOREIGN KEY (id_mcv_local) REFERENCES mcv_local (id_mcv_local)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE delivery_man_application(
     id_delivery_man_application int NOT NULL AUTO_INCREMENT,
@@ -87,6 +79,7 @@ CREATE TABLE delivery_man_application(
     firstname_delivery_man varchar (30) NOT NULL,
     phone_delivery_man varchar (30) NOT NULL,
     mail_delivery_man varchar (50) NOT NULL,
+	created_delivery_man tinyint (1) DEFAULT 0,
     id_mcv_local int NOT NULL,
     PRIMARY KEY (id_delivery_man_application),
     CONSTRAINT delivery_man_application_ibfk_1 FOREIGN KEY (id_mcv_local) REFERENCES mcv_local (id_mcv_local)
@@ -98,13 +91,13 @@ CREATE TABLE restaurant (
     address_restaurant varchar(100) NOT NULL,
     login_restaurant varchar(30) NOT NULL,
     password_restaurant varchar(250) NOT NULL,
-    phone_restaurant varchar(30) NOT NULL,
-    phone2_restaurant varchar(30) DEFAULT NULL,
+    phone_restaurant varchar(30) NOT NULL,    
     mail_restaurant varchar(50) NOT NULL,
     connected_restaurant tinyint(1) DEFAULT 0,
     open_restaurant tinyint (1) DEFAULT 0,
     img_restaurant varchar (50) DEFAULT 'restaurant.png',
     id_mcv_local int NOT NULL,
+	activated_restaurant tinyint (1) DEFAULT 0,
     PRIMARY KEY (id_restaurant),
     CONSTRAINT restaurant_ibfk_1 FOREIGN KEY (id_mcv_local) REFERENCES mcv_local (id_mcv_local)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
@@ -131,6 +124,7 @@ CREATE TABLE delivery_man (
     connected_delivery_man tinyint(1) DEFAULT 0,
     state_delivery_man tinyint (1) DEFAULT 0,
     id_mcv_local int NOT NULL,
+	activated_delivery_man tinyint (1) DEFAULT 0,
     PRIMARY KEY (id_delivery_man),
     CONSTRAINT delivery_man_ibfk_1 FOREIGN KEY (id_mcv_local) REFERENCES mcv_local (id_mcv_local)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
@@ -198,17 +192,4 @@ CREATE TABLE avoir (
     CONSTRAINT avoir_ibfk_2 FOREIGN KEY (id_product) REFERENCES product (id_product)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-/*let queryInsert = `INSERT INTO mcv_local (name_mcv_local, phone_mcv_local, mail_mcv_local, login_mcv_local, 
- password_mcv_local,img_mcv_local)   
- VALUES('Lourdes','060606060','lourdes@lourdes.com', 'lourdes', '${bcrypt.hashSync("lourdes", 10)}','lourdes.jpg') `;
- connection.query(queryInsert ,(err, mcv)=>{
- if(err) throw err;
- }); 
 
-queryInsert = `INSERT INTO mcv_local (name_mcv_local, phone_mcv_local, mail_mcv_local, login_mcv_local, 
- password_mcv_local,img_mcv_local)   
- VALUES('Pau','060606060','pau@pau.com', 'pau', '${bcrypt.hashSync("pau", 10)}','pau.jpg') `;
- connection.query(queryInsert ,(err, mcv)=>{
- if(err) throw err;
- });*/
- /*création de la table produit*/

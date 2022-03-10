@@ -10,15 +10,20 @@ exports.login = async (req,res) => {
     const result = await query.perform_query("SELECT * FROM mcv_local WHERE login_mcv_local = ? LIMIT 1", [login_user]);
     if(!result || !bcrypt.compareSync(password_user, result[0].password_mcv_local)){
         res.render('error', {error: "Login ou mot de passe incorects", return_path: "/login.html", return_message:"Se connecter"})
-    } else { 
-        const connected = await query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE login_mcv_local = (?)", [1, login_user]);
-        const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
-        res.cookie("x-access-token", token, {
-            secure: true,
-            httpOnly: true,
-            maxAge: 4*60*60*1000
-        });
-        res.render('store_acount', {store: result})    
+    } else {
+        if(result[0].activate_restaurant = 0){
+            res.render('error', {error: "Veuillez vérifier votre email e activer votre compte", return_path: "", return_message:""});
+        } else {
+            const connected = await query.perform_query("UPDATE mcv_local SET connected_mcv_local = ? WHERE login_mcv_local = (?)", [1, login_user]);
+            const token = jwt.sign({ user_pseudo: login_user}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "4h"});
+            res.cookie("x-access-token", token, {
+                secure: true,
+                httpOnly: true,
+                maxAge: 4*60*60*1000
+            });
+            res.render('store_acount', {store: result}) 
+        }
+           
     }
 }
 
@@ -58,7 +63,7 @@ exports.add_restaurant = async (req,res) => {
     if(connected[0].connected_mcv_local === 1 && req.user_pseudo){
         const password_restaurant = generate_pass.random_pass();        
         const hash_password_restaurant = bcrypt.hashSync(password_restaurant, 10);
-        const result = await query.perform_query("SELECT * FROM restaurant_application WHERE id_restaurant_application = ? LIMIT 1", [req.params.id]);
+        const result = await query.perform_query("SELECT * FROM restaurant_application WHERE id_restaurant_application = ? AND created_restaurant = ? LIMIT 1", [req.params.id, 0]);
         const login_restaurant = req.params.id + "_" + result[0].name_restaurant ;
         const new_restaurant = await query.perform_query("INSERT INTO restaurant (id_mcv_local, name_restaurant, address_restaurant,            phone_restaurant, mail_restaurant, login_restaurant, password_restaurant) VALUES (?,?,?,?,?,?,?)", [id, result[0].name_restaurant, result[0].address_restaurant, result[0].phone_restaurant, result[0].mail_restaurant, login_restaurant, hash_password_restaurant]);
         const treated = await query.perform_query("UPDATE restaurant_application SET created_restaurant = ? WHERE id_restaurant_application =?", [1,req.params.id]);

@@ -1867,7 +1867,7 @@
 												"$ref": "AAAAAAF+h/qvHdh5qWE="
 											},
 											"font": "Arial;13;0",
-											"left": 40.72998046875,
+											"left": 32.72998046875,
 											"top": 5,
 											"width": 115.9052734375,
 											"height": 13,
@@ -1880,7 +1880,7 @@
 												"$ref": "AAAAAAF+h/qvHdh5qWE="
 											},
 											"font": "Arial;13;1",
-											"left": 21,
+											"left": 13,
 											"top": 5,
 											"width": 14.72998046875,
 											"height": 13,
@@ -1888,9 +1888,9 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 16,
+									"left": 8,
 									"width": 1081,
-									"height": 873,
+									"height": 705,
 									"nameLabel": {
 										"$ref": "AAAAAAF+h/qvHdh6uQY="
 									},
@@ -1996,14 +1996,14 @@
 											"left": 132,
 											"top": 80,
 											"width": 1,
-											"height": 745
+											"height": 623
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 80,
 									"top": 40,
 									"width": 104.5126953125,
-									"height": 785,
+									"height": 663,
 									"nameCompartment": {
 										"$ref": "AAAAAAF+h/r7OtiIrQA="
 									},
@@ -2109,14 +2109,14 @@
 											"left": 408,
 											"top": 80,
 											"width": 1,
-											"height": 761
+											"height": 625
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 328,
 									"top": 40,
 									"width": 159.61669921875,
-									"height": 801,
+									"height": 665,
 									"nameCompartment": {
 										"$ref": "AAAAAAF+h/x9+9ioc54="
 									},
@@ -2225,14 +2225,14 @@
 											"left": 740,
 											"top": 80,
 											"width": 1,
-											"height": 769
+											"height": 625
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 704,
 									"top": 40,
 									"width": 72.736328125,
-									"height": 809,
+									"height": 665,
 									"nameCompartment": {
 										"$ref": "AAAAAAF+h/zZINjIOB0="
 									},
@@ -2884,7 +2884,7 @@
 											"left": 401,
 											"top": 258,
 											"width": 14,
-											"height": 543
+											"height": 431
 										}
 									],
 									"font": "Arial;13;0",
@@ -3708,17 +3708,17 @@
 												"$ref": "AAAAAAF+oXlUlzvSHts="
 											},
 											"font": "Arial;13;0",
-											"left": 455,
-											"top": 507,
-											"width": 184.99609375,
+											"left": 431,
+											"top": 528,
+											"width": 309.30224609375,
 											"height": 13,
-											"alpha": 1.5805037586864985,
-											"distance": 103.00485425454472,
+											"alpha": 1.4308706659465125,
+											"distance": 143.4015341619468,
 											"hostEdge": {
 												"$ref": "AAAAAAF+oXlUlzvTH6k="
 											},
 											"edgePosition": 1,
-											"text": "14 : création de email à envoyer"
+											"text": "14 : création de envoi de email de création de compte"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3801,341 +3801,6 @@
 								},
 								{
 									"_type": "UMLSeqMessageView",
-									"_id": "AAAAAAF+iCYonNsLpp0=",
-									"_parent": {
-										"$ref": "AAAAAAF+h/qvHdh4VEw="
-									},
-									"model": {
-										"$ref": "AAAAAAF+iCYonNsKv8U="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCYondsMDcs=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCYonNsKv8U="
-											},
-											"font": "Arial;13;0",
-											"left": 448,
-											"top": 559,
-											"width": 237,
-											"height": 26,
-											"alpha": -2.0988701534593726,
-											"distance": 13.892443989449804,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"edgePosition": 1,
-											"text": "15 : demande de sauvegarde de mail à envoyer",
-											"wordWrap": true
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCYondsNplc=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCYonNsKv8U="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 573,
-											"top": 529,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 25,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCYondsOoQ4=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCYonNsKv8U="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 573,
-											"top": 564,
-											"height": 13,
-											"alpha": -1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAF+iCYondsPNso=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCYonNsLpp0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCYonNsKv8U="
-											},
-											"font": "Arial;13;0",
-											"left": 733,
-											"top": 560,
-											"width": 14,
-											"height": 65
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAF+h/zZINjNVpc="
-									},
-									"tail": {
-										"$ref": "AAAAAAF+h/x9+9it9Ro="
-									},
-									"points": "414:560;733:560",
-									"nameLabel": {
-										"$ref": "AAAAAAF+iCYondsMDcs="
-									},
-									"stereotypeLabel": {
-										"$ref": "AAAAAAF+iCYondsNplc="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAF+iCYondsOoQ4="
-									},
-									"activation": {
-										"$ref": "AAAAAAF+iCYondsPNso="
-									}
-								},
-								{
-									"_type": "UMLSeqMessageView",
-									"_id": "AAAAAAF+iCJDLNqu5IY=",
-									"_parent": {
-										"$ref": "AAAAAAF+h/qvHdh4VEw="
-									},
-									"model": {
-										"$ref": "AAAAAAF+iCJDK9qtrsE="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCJDLNqvRh0=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCJDK9qtrsE="
-											},
-											"font": "Arial;13;0",
-											"left": 791,
-											"top": 563,
-											"width": 144.498046875,
-											"height": 13,
-											"alpha": 1.5822890721889233,
-											"distance": 87.00574693662483,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"edgePosition": 1,
-											"text": "16 : sauvegarde email"
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCJDLNqwMkc=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCJDK9qtrsE="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 800,
-											"top": 563,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 25,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCJDLNqxdvY=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCJDK9qtrsE="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 766,
-											"top": 564,
-											"height": 13,
-											"alpha": -1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAF+iCJDLNqyzn8=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCJDLNqu5IY="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCJDK9qtrsE="
-											},
-											"font": "Arial;13;0",
-											"left": 740,
-											"top": 580,
-											"width": 14,
-											"height": 29
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAF+h/zZINjNVpc="
-									},
-									"tail": {
-										"$ref": "AAAAAAF+h/zZINjNVpc="
-									},
-									"points": "746:560;776:560;776:580;753:580",
-									"nameLabel": {
-										"$ref": "AAAAAAF+iCJDLNqvRh0="
-									},
-									"stereotypeLabel": {
-										"$ref": "AAAAAAF+iCJDLNqwMkc="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAF+iCJDLNqxdvY="
-									},
-									"activation": {
-										"$ref": "AAAAAAF+iCJDLNqyzn8="
-									}
-								},
-								{
-									"_type": "UMLSeqMessageView",
-									"_id": "AAAAAAF+iCmBKdtcOso=",
-									"_parent": {
-										"$ref": "AAAAAAF+h/qvHdh4VEw="
-									},
-									"model": {
-										"$ref": "AAAAAAF+iCmBKdtbXvo="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCmBKttd6Cw=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCmBKdtbXvo="
-											},
-											"font": "Arial;13;0",
-											"left": 478,
-											"top": 612,
-											"width": 188.6142578125,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"edgePosition": 1,
-											"text": "17 : email à envoyer sauvegardé"
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCmBKtteco0=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCmBKdtbXvo="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 572,
-											"top": 627,
-											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 25,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF+iCmBKttf/nU=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCmBKdtbXvo="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 573,
-											"top": 592,
-											"height": 13,
-											"alpha": -1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAF+iCmBKttgf0s=",
-											"_parent": {
-												"$ref": "AAAAAAF+iCmBKdtcOso="
-											},
-											"model": {
-												"$ref": "AAAAAAF+iCmBKdtbXvo="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 401,
-											"top": 608,
-											"width": 14,
-											"height": 25
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAF+h/x9+9it9Ro="
-									},
-									"tail": {
-										"$ref": "AAAAAAF+h/zZINjNVpc="
-									},
-									"points": "733:608;414:608",
-									"nameLabel": {
-										"$ref": "AAAAAAF+iCmBKttd6Cw="
-									},
-									"stereotypeLabel": {
-										"$ref": "AAAAAAF+iCmBKtteco0="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAF+iCmBKttf/nU="
-									},
-									"activation": {
-										"$ref": "AAAAAAF+iCmBKttgf0s="
-									}
-								},
-								{
-									"_type": "UMLSeqMessageView",
 									"_id": "AAAAAAF+iCn2jttyEdc=",
 									"_parent": {
 										"$ref": "AAAAAAF+h/qvHdh4VEw="
@@ -4154,17 +3819,17 @@
 												"$ref": "AAAAAAF+iCn2jttxJBU="
 											},
 											"font": "Arial;13;0",
-											"left": 423,
-											"top": 648,
+											"left": 431,
+											"top": 568,
 											"width": 300.60595703125,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": 1.1525715332982374,
+											"distance": 19.697715603592208,
 											"hostEdge": {
 												"$ref": "AAAAAAF+iCn2jttyEdc="
 											},
 											"edgePosition": 1,
-											"text": "18 : supprimer formulaire de demande de restaurant"
+											"text": "15 : update formulaire de demande de restaurant"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4178,7 +3843,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 633,
+											"top": 561,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -4199,7 +3864,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 573,
-											"top": 668,
+											"top": 596,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -4219,9 +3884,9 @@
 											},
 											"font": "Arial;13;0",
 											"left": 733,
-											"top": 664,
+											"top": 592,
 											"width": 14,
-											"height": 65
+											"height": 68
 										}
 									],
 									"font": "Arial;13;0",
@@ -4231,7 +3896,7 @@
 									"tail": {
 										"$ref": "AAAAAAF+h/x9+9it9Ro="
 									},
-									"points": "414:664;733:664",
+									"points": "414:592;733:592",
 									"nameLabel": {
 										"$ref": "AAAAAAF+iCn2jttzQmg="
 									},
@@ -4266,7 +3931,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 787,
-											"top": 667,
+											"top": 595,
 											"width": 174.87158203125,
 											"height": 13,
 											"alpha": 1.5809990532477265,
@@ -4275,7 +3940,7 @@
 												"$ref": "AAAAAAF+iCqLsNuKyHQ="
 											},
 											"edgePosition": 1,
-											"text": "19 : suppression de formulaire"
+											"text": "16 : update de formulaire"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4289,7 +3954,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 800,
-											"top": 667,
+											"top": 595,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -4310,7 +3975,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 766,
-											"top": 668,
+											"top": 596,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -4330,7 +3995,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 740,
-											"top": 684,
+											"top": 612,
 											"width": 14,
 											"height": 29
 										}
@@ -4342,7 +4007,7 @@
 									"tail": {
 										"$ref": "AAAAAAF+h/zZINjNVpc="
 									},
-									"points": "746:664;776:664;776:684;753:684",
+									"points": "746:592;776:592;776:612;753:612",
 									"nameLabel": {
 										"$ref": "AAAAAAF+iCqLsNuL6NU="
 									},
@@ -4355,6 +4020,19 @@
 									"activation": {
 										"$ref": "AAAAAAF+iCqLsNuOtA4="
 									}
+								},
+								{
+									"_type": "UMLNoteView",
+									"_id": "AAAAAAF+iDhIatw25z8=",
+									"_parent": {
+										"$ref": "AAAAAAF+h/qvHdh4VEw="
+									},
+									"font": "Arial;13;0",
+									"left": 112,
+									"top": 704,
+									"width": 472,
+									"height": 85,
+									"text": "2)7)11)15) Scénario d'erreur\nLe serveur de BDD ne répond pas\n 1. Impossible de se connecter\n 2. Le SI indique l'échec de connexion\nCe scénario se termine à ce point"
 								},
 								{
 									"_type": "UMLSeqMessageView",
@@ -4376,9 +4054,9 @@
 												"$ref": "AAAAAAF+iCwhW9umY5k="
 											},
 											"font": "Arial;13;0",
-											"left": 502,
-											"top": 726,
-											"width": 140.1689453125,
+											"left": 501,
+											"top": 636,
+											"width": 150.28076171875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4386,7 +4064,7 @@
 												"$ref": "AAAAAAF+iCwhXNunbdM="
 											},
 											"edgePosition": 1,
-											"text": "20 : formulaire supprimé"
+											"text": "17 : formulaire mise à jour"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4399,8 +4077,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 572,
-											"top": 741,
+											"left": 576,
+											"top": 651,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -4420,8 +4098,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 573,
-											"top": 706,
+											"left": 577,
+											"top": 616,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -4442,7 +4120,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 401,
-											"top": 722,
+											"top": 632,
 											"width": 14,
 											"height": 25
 										}
@@ -4454,7 +4132,7 @@
 									"tail": {
 										"$ref": "AAAAAAF+h/zZINjNVpc="
 									},
-									"points": "733:722;414:722",
+									"points": "740:632;414:632",
 									"nameLabel": {
 										"$ref": "AAAAAAF+iCwhXNuoF2c="
 									},
@@ -4467,19 +4145,6 @@
 									"activation": {
 										"$ref": "AAAAAAF+iCwhXNurxwA="
 									}
-								},
-								{
-									"_type": "UMLNoteView",
-									"_id": "AAAAAAF+iDhIatw25z8=",
-									"_parent": {
-										"$ref": "AAAAAAF+h/qvHdh4VEw="
-									},
-									"font": "Arial;13;0",
-									"left": 105,
-									"top": 880,
-									"width": 472,
-									"height": 85,
-									"text": "2)7)11)15)18) Scénario d'erreur\nLe serveur de BDD ne répond pas\n 1. Impossible de se connecter\n 2. Le SI indique l'échec de connexion\nCe scénario se termine à ce point"
 								},
 								{
 									"_type": "UMLSeqMessageView",
@@ -4502,7 +4167,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 217,
-											"top": 764,
+											"top": 676,
 											"width": 96.8271484375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -4511,7 +4176,7 @@
 												"$ref": "AAAAAAF+iB38Dtp+XjY="
 											},
 											"edgePosition": 1,
-											"text": "21 : compte créé"
+											"text": "18 : compte créé"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4525,7 +4190,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 265,
-											"top": 779,
+											"top": 691,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -4546,7 +4211,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 266,
-											"top": 744,
+											"top": 656,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -4567,7 +4232,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 132,
-											"top": 760,
+											"top": 672,
 											"width": 14,
 											"height": 25
 										}
@@ -4579,7 +4244,7 @@
 									"tail": {
 										"$ref": "AAAAAAF+h/x9+9it9Ro="
 									},
-									"points": "401:760;132:760",
+									"points": "401:672;132:672",
 									"nameLabel": {
 										"$ref": "AAAAAAF+iB38Dtp/7no="
 									},
@@ -4789,56 +4454,13 @@
 							"_parent": {
 								"$ref": "AAAAAAF+h/qvHdh39G4="
 							},
-							"name": "création de email à envoyer",
+							"name": "création de envoi de email de création de compte",
 							"source": {
 								"$ref": "AAAAAAF+h/x9+9imNvU="
 							},
 							"target": {
 								"$ref": "AAAAAAF+h/x9+9imNvU="
 							}
-						},
-						{
-							"_type": "UMLMessage",
-							"_id": "AAAAAAF+iCYonNsKv8U=",
-							"_parent": {
-								"$ref": "AAAAAAF+h/qvHdh39G4="
-							},
-							"name": "demande de sauvegarde de mail à envoyer",
-							"source": {
-								"$ref": "AAAAAAF+h/x9+9imNvU="
-							},
-							"target": {
-								"$ref": "AAAAAAF+h/zZH9jGvSo="
-							}
-						},
-						{
-							"_type": "UMLMessage",
-							"_id": "AAAAAAF+iCJDK9qtrsE=",
-							"_parent": {
-								"$ref": "AAAAAAF+h/qvHdh39G4="
-							},
-							"name": "sauvegarde email",
-							"source": {
-								"$ref": "AAAAAAF+h/zZH9jGvSo="
-							},
-							"target": {
-								"$ref": "AAAAAAF+h/zZH9jGvSo="
-							}
-						},
-						{
-							"_type": "UMLMessage",
-							"_id": "AAAAAAF+iCmBKdtbXvo=",
-							"_parent": {
-								"$ref": "AAAAAAF+h/qvHdh39G4="
-							},
-							"name": "email à envoyer sauvegardé",
-							"source": {
-								"$ref": "AAAAAAF+h/zZH9jGvSo="
-							},
-							"target": {
-								"$ref": "AAAAAAF+h/x9+9imNvU="
-							},
-							"messageSort": "reply"
 						},
 						{
 							"_type": "UMLMessage",
@@ -4846,7 +4468,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF+h/qvHdh39G4="
 							},
-							"name": "supprimer formulaire de demande de restaurant",
+							"name": "update formulaire de demande de restaurant",
 							"source": {
 								"$ref": "AAAAAAF+h/x9+9imNvU="
 							},
@@ -4860,7 +4482,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF+h/qvHdh39G4="
 							},
-							"name": "suppression de formulaire",
+							"name": "update de formulaire",
 							"source": {
 								"$ref": "AAAAAAF+h/zZH9jGvSo="
 							},
@@ -4874,7 +4496,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF+h/qvHdh39G4="
 							},
-							"name": "formulaire supprimé",
+							"name": "formulaire mise à jour",
 							"source": {
 								"$ref": "AAAAAAF+h/zZH9jGvSo="
 							},
